@@ -49,9 +49,11 @@
                 <a th:href="@{|/gif/${gif.name}|}">
                     <img th:src="@{|/gifs/${gif.name}.gif|}" />
                     <a href="#" th:class="(${gif.favorite}? 'un' : '') + 'mark favorite'"></a>
+
                 </a>
             </div>
         </div>
+        <p>Hello</p>
     </div>
 
 <script th:src="@{/vendor/jquery/jquery-1.11.3.js}"></script>

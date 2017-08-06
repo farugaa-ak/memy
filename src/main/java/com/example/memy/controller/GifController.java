@@ -16,32 +16,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GifController {
-    GifDaoImpl gifDaoImpl=new GifDaoImpl();
+
+    private GifDaoImpl gifDaoImpl=new GifDaoImpl();
+
     @GetMapping("/")
     public String home(ModelMap modelMap){
-
         modelMap.addAttribute("gifs", gifDaoImpl.allGifs());
         return "home";
     }
+
     @GetMapping("/gif/{name}")
     public String display(@PathVariable String name, @ModelAttribute Gif gif, ModelMap modelMap){
-
         modelMap.addAttribute("gif",gifDaoImpl.findByName(name).get(0));
-
-
-        modelMap.addAttribute("allgifs",gifDaoImpl.allGifs());
-
         return ("gif-details");
     }
+
     @GetMapping("/favorites")
     public String showFavorites(ModelMap modelMap){
         modelMap.addAttribute("gifs",gifDaoImpl.findFavourites());
-    return ("favorites");
+        return ("favorites");
     }
+
     @GetMapping("/gifs/search")
     public String result(@RequestParam String q, ModelMap modelMap){
         modelMap.addAttribute("gifs", gifDaoImpl.findByName(q));
         return "home";
     }
-
 }

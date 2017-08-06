@@ -9,11 +9,11 @@ public class ArticleDaoImp implements ArticleDao {
 
     private static List<Article> articles = new ArrayList<>();
     static {
-        articles.add(new Article(1,"Articul1","OpisOpisOpis"));
-        articles.add(new Article(2,"Articul2","OpisOpisOpis"));
-        articles.add(new Article(3,"Articul3","OpisOpisOpis"));
-        articles.add(new Article(4,"Articul4","OpisOpisOpis"));
-        articles.add(new Article(5,"Articul5","OpisOpisOpis"));
+        articles.add(new Article(1,"Article1","Opis1"));
+        articles.add(new Article(2,"Article2","Opis2"));
+        articles.add(new Article(3,"Article3","Opis3"));
+        articles.add(new Article(4,"Article4","Opis4"));
+        articles.add(new Article(5,"Article5","Opis5"));
 
     }
 

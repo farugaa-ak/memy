@@ -2,29 +2,38 @@ package com.example.memy.ArticleDao;
 
 import com.example.memy.Model.Gif;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by slickender on 02.08.2017.
- */
+
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class GifDaoImpl implements GifDao {
 
     private static List<Gif> gifList = new ArrayList<>();
-    private static CategoryDaoImpl categoryDao= new CategoryDaoImpl();
 
     static {
-        gifList.add(new Gif("android-explosion", true,"aaaa", categoryDao.findAll().get(0)));
-        gifList.add(new Gif("ben-and-mike", false,"bbb", categoryDao.findAll().get(0)));
-        gifList.add(new Gif("book-dominos", false,"zxzzzzqwe", categoryDao.findAll().get(1)));
-        gifList.add(new Gif("compiler-bot", true,"iwjeeeeij", categoryDao.findAll().get(1)));
-        gifList.add(new Gif("cowboy-coder", false,"ssssssl", categoryDao.findAll().get(2)));
-        gifList.add(new Gif("infinite-andrew", false,"pqdddejj", categoryDao.findAll().get(2)));
+        gifList.add(new Gif("android-explosion", true));
+        gifList.add(new Gif("ben-and-mike", false));
+        gifList.add(new Gif("book-dominos", false));
+        gifList.add(new Gif("compiler-bot", true));
+        gifList.add(new Gif("cowboy-coder", false));
+        gifList.add(new Gif("infinite-andrew", false));
+
     }
-    
+
     public List<Gif> allGifs() {
         return gifList;
     }
+
 
     public List<Gif> gifsInCategory(Long id){
         List<Gif> gifListInPainted=new ArrayList<>();
@@ -48,6 +57,7 @@ public class GifDaoImpl implements GifDao {
             return gifList;
     }
 
+
     @Override
     public List<Gif> findFavourites() {
         List<Gif> favouritesGifs = new ArrayList<>();
@@ -69,11 +79,17 @@ public class GifDaoImpl implements GifDao {
             }
         }
         return result;
+
     }
 
 
 
 
 
+}
+
+
+
+    }
 }
 

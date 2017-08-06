@@ -5,6 +5,7 @@ import java.awt.*;
 
 
 public class Gif {
+
     private String name;
     private boolean favorite;
     private String userName;
@@ -26,13 +27,6 @@ public class Gif {
         this.favorite = favorite;
         this.userName = userName;
     }
-
-
-public class Gif {
-    private String name;
-    private boolean favorite;
-
-
     public Gif() {
     }
 
@@ -40,7 +34,6 @@ public class Gif {
         this.name = name;
         this.favorite = favorite;
     }
-
 
     public Gif(String name, boolean favorite, Category category) {
         this.name = name;
@@ -55,7 +48,6 @@ public class Gif {
     public void setCategory(Category category) {
         this.category = category;
     }
-
 
     public String getName() {
         return name;

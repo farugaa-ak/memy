@@ -2,16 +2,6 @@ package com.example.memy.ArticleDao;
 
 import com.example.memy.Model.Gif;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
-
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,21 +9,31 @@ import java.util.List;
 public class GifDaoImpl implements GifDao {
 
     private static List<Gif> gifList = new ArrayList<>();
+    private static CategoryDaoImpl categoryDao= new CategoryDaoImpl();
 
     static {
-        gifList.add(new Gif("android-explosion", true));
-        gifList.add(new Gif("ben-and-mike", false));
-        gifList.add(new Gif("book-dominos", false));
-        gifList.add(new Gif("compiler-bot", true));
-        gifList.add(new Gif("cowboy-coder", false));
-        gifList.add(new Gif("infinite-andrew", false));
-
+        gifList.add(new Gif("android-explosion", true,"User1", categoryDao.findAll().get(2)));
+        gifList.add(new Gif("ben-and-mike", false,"User2", categoryDao.findAll().get(0)));
+        gifList.add(new Gif("book-dominos", false,"User3", categoryDao.findAll().get(1)));
+        gifList.add(new Gif("compiler-bot", false,"User4", categoryDao.findAll().get(2)));
+        gifList.add(new Gif("cowboy-coder", false,"User5", categoryDao.findAll().get(1)));
+        gifList.add(new Gif("infinite-andrew", true,"User6", categoryDao.findAll().get(0)));
     }
 
     public List<Gif> allGifs() {
         return gifList;
     }
 
+    public List<Gif> gifsInCategory(String name){
+        List<Gif> result=new ArrayList<>();
+        if (categoryDao.findAll().get(0).getName().equals(name))
+            result=gifsInCategory(categoryDao.findAll().get(0).getId());
+        else if (categoryDao.findAll().get(1).getName().equals(name))
+            result=gifsInCategory(categoryDao.findAll().get(1).getId());
+        else if (categoryDao.findAll().get(2).getName().equals(name))
+            result=gifsInCategory(categoryDao.findAll().get(2).getId());
+        return result;
+    }
 
     public List<Gif> gifsInCategory(Long id){
         List<Gif> gifListInPainted=new ArrayList<>();
@@ -57,7 +57,6 @@ public class GifDaoImpl implements GifDao {
             return gifList;
     }
 
-
     @Override
     public List<Gif> findFavourites() {
         List<Gif> favouritesGifs = new ArrayList<>();
@@ -65,7 +64,6 @@ public class GifDaoImpl implements GifDao {
             if (gifList.get(i).getFavorite() == true) {
                 favouritesGifs.add(gifList.get(i));
             }
-
         }
         return favouritesGifs;
     }
@@ -79,17 +77,12 @@ public class GifDaoImpl implements GifDao {
             }
         }
         return result;
-
     }
-
-
-
-
 
 }
 
 
 
-    }
-}
+
+
 

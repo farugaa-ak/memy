@@ -1,4 +1,4 @@
-package com.example.memy;
+package pl.akademiakodu.memy;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

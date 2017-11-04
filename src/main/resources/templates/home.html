@@ -44,10 +44,7 @@
         </div>
     </div>
     <div class="gifs container">
-<<<<<<< HEAD
-=======
         <p th:if="${gifs.isEmpty()}">Nie znaleziono memów.</p>
->>>>>>> a67c78693205496ab9c09e97b796015c7bc8029b
         <div class="row">
             <div th:each="gif : ${gifs}" class="col s12 l4">
                 <a th:href="@{|/gif/${gif.name}|}">

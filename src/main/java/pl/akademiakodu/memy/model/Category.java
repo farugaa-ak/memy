@@ -1,21 +1,20 @@
-package com.example.memy.Model;
+package pl.akademiakodu.memy.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
+import java.util.Objects;
 
 
 public class Category {
 
-    private Long id;
+    private Integer id;
     private String name;
-    private List<Gif> gifs=new ArrayList<>();
+    private List<Gif> gifs = new ArrayList<>();
 
     public Category() {
     }
 
-    public Category(Long id, String name) {
+    public Category(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -28,11 +27,11 @@ public class Category {
         this.gifs = gifs;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -44,8 +43,23 @@ public class Category {
         this.name = name;
     }
 
-    public void addGifsToCattegory(Gif gif){
+    public void addGifsToCattegory(Gif gif) {
         gifs.add(gif);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Category category = (Category) o;
+        return Objects.equals(id, category.id) &&
+                Objects.equals(name, category.name) &&
+                Objects.equals(gifs, category.gifs);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, gifs);
     }
 
     @Override

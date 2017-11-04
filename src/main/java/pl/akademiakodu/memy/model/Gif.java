@@ -1,7 +1,6 @@
-package com.example.memy.Model;
+package pl.akademiakodu.memy.model;
 
-import java.awt.*;
-
+import java.util.Objects;
 
 
 public class Gif {
@@ -27,6 +26,7 @@ public class Gif {
         this.favorite = favorite;
         this.userName = userName;
     }
+
     public Gif() {
     }
 
@@ -57,11 +57,41 @@ public class Gif {
         this.name = name;
     }
 
-    public boolean getFavorite() {
+    public boolean isFavorite() {
         return favorite;
     }
 
     public void setFavorite(boolean favorite) {
-        favorite = favorite;
+        this.favorite = favorite;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Gif gif = (Gif) o;
+        return favorite == gif.favorite &&
+                Objects.equals(name, gif.name) &&
+                Objects.equals(userName, gif.userName) &&
+                Objects.equals(category, gif.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, favorite, userName, category);
+    }
+
+    @Override
+    public String toString() {
+        return "Gif{" +
+                "name='" + name + '\'' +
+                ", favorite=" + favorite +
+                ", userName='" + userName + '\'' +
+                ", category=" + category +
+                '}';
     }
 }
